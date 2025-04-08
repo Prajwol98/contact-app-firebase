@@ -14,6 +14,7 @@ function App() {
   const [selectedContact, setSelectedContact] = useState(null); // for delete
   const [isAddModelOpen, setIsAddModelOpen] = useState(false); // for add modal
   const [newContact, setNewContact] = useState({ name: "", email: "" });
+  const [searchTerm,setSearchTerm]=useState("")
 
   // DELETE FUNCTION
   const deleteTheItem = async (id) => {
@@ -85,7 +86,9 @@ function App() {
         <FaSearch className="absolute left-4 h-5 w-5 text-gray-500" />
         <input
           type="text"
-          placeholder="Enter the contact..."
+          placeholder="search..."
+          value={searchTerm}
+          onChange={(e)=>setSearchTerm(e.target.value)}
           className="pl-12 h-10 text-black rounded-md bg-white border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 w-full"
         />
         <CiCirclePlus
@@ -97,7 +100,8 @@ function App() {
       {/* Contact List */}
       <div>
         {contacts.length > 0 ? (
-          contacts.map((contact, index) => (
+          contacts.filter(contact=>contact.name.toLowerCase().includes(searchTerm.toLowerCase()))
+          .map((contact, index) => (
             <div key={contact.id} className="bg-amber-500 rounded-lg p-4 mt-5">
               <div className="flex items-center">
                 <FaRegUserCircle className="mr-2 text-white" />

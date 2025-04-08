@@ -4,6 +4,10 @@ import { CiCirclePlus } from "react-icons/ci";
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config/firebase";
+import { FaRegUserCircle } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import { MdDelete } from "react-icons/md";
+import { CiEdit } from "react-icons/ci";
 
 function App() {
   const [contacts, setContacts] = useState([]);
@@ -13,9 +17,15 @@ function App() {
       try {
         const contactCollection = collection(db, "contact-app");
         const snapShot = await getDocs(contactCollection);  
-        const contactList = snapShot.docs.map((doc) => doc.data()); 
+        const contactList = snapShot.docs.map((doc) =>{
+          return{
+            id:doc.id,
+            ...doc.data()
+          }
+        } 
+      ); 
         setContacts(contactList);  
-        console.log(contactList);  
+       
       } catch (error) {
         console.log(error);
       }
@@ -40,10 +50,22 @@ function App() {
       <div>
         {contacts.length > 0 ? (
           contacts.map((contact, index) => (
-            <div key={index}>
-              <p>{contact.name}</p> {/* Assuming your contact data has a 'name' field */}
-              <p>{contact.email}</p> {/* Assuming your contact data has a 'name' field */}
-            </div>
+            <div key={index} className="bg-amber-500 rounded-lg p-4 mt-5">
+              
+              <div className="flex items-center ">
+             <FaRegUserCircle className="mr-2 text-white"/>
+              <p className="text-white">{contact.name}</p> 
+              </div>
+              <div className="flex items-center">
+             <MdEmail className="mr-2 text-white"/> 
+             <p className="text-white">{contact.email}</p>
+              </div>
+              <div className="flex justify-end">
+              <CiEdit className="text-green-700"/>
+              <MdDelete className="text-red-700" />
+              </div>
+              </div>
+            
           ))
         ) : (
           <p>No contacts found</p>

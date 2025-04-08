@@ -1,9 +1,9 @@
-import './App.css'
+import Navbar from "./components/Navbar"
 
 function App() {
 
  return(
-  <p className='text-amber-400 g bg-red-400'>hey bro</p>
+  <Navbar></Navbar>
  )
 }
 

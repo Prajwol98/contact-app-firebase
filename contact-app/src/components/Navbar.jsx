@@ -1,7 +1,25 @@
+import { Route, Routes, Link } from "react-router-dom";
+import Home from "./Home";
+import AddContact from "./AddContact";
+
 const Navbar = () => {
   return (
-    <div className="m-4 p-4 h-[60px] bg-white rounded-lg shadow-md flex items-center justify-center">
-      <h1 className="text-xl font-semibold text-gray-800">Contact App</h1>
+    <div>
+      <nav className="bg-red-500 p-4">
+        <div className="flex gap-4">
+          <Link to="/" className="text-white hover:text-gray-200">
+            Home
+          </Link>
+          <Link to="/AddContact" className="text-white hover:text-gray-200">
+            Add Contact
+          </Link>
+        </div>
+      </nav>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/AddContact" element={<AddContact />} />
+      </Routes>
     </div>
   );
 };

@@ -5,7 +5,7 @@ import AddContact from "./AddContact";
 const Navbar = () => {
   return (
     <div>
-      <nav className="bg-red-500 p-4">
+      <nav>
         <div className="flex gap-4">
           <Link to="/" className="text-white hover:text-gray-200">
             Home

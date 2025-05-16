@@ -1,10 +1,10 @@
 import React from "react";
-import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
 
 const App = () => {
   return (
-    <div>
-      <Navbar></Navbar>
+    <div className="container mx-auto p-4 bg">
+      <Home></Home>
     </div>
   );
 };

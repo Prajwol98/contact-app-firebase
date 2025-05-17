@@ -1,7 +1,12 @@
-import React from "react";
+import ContactList from "../components/ContactList";
 
 const Addcontact = () => {
-  return <div>Addcontact</div>;
+  return (
+    <div>
+      Addcontact
+      <ContactList></ContactList>
+    </div>
+  );
 };
 
 export default Addcontact;

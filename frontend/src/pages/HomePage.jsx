@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-// import Home from "./pages/Home";
 import AddContact from "../pages/AddContact";
 import EditContact from "../pages/EditContact";
 import Header from "../components/Header";
@@ -9,7 +8,6 @@ function HomePage() {
       <Header />
       <div className="p-4 max-w-3xl mx-auto">
         <Routes>
-          {/* <Route path="/" element={<Home />} /> */}
           <Route path="/add" element={<AddContact />} />
           <Route path="/edit/:id" element={<EditContact />} />
         </Routes>
